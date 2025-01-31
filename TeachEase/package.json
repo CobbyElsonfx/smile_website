@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "daisyui": "^4.12.11"
+  },
+  "dependencies": {
+    "pagedone": "^1.2.2"
+  }
+}
