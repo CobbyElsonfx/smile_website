@@ -2,11 +2,17 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
+import useAnalytics from '../../hooks/useAnalytics';
 
 const ContactSection = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+  const { trackEvent } = useAnalytics();
+
+  const handleContactClick = (type) => {
+    trackEvent('Contact', 'Click', `Clicked ${type}`);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,7 +73,13 @@ const ContactSection = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="flex items-start space-x-4">
+            <a 
+              href="https://maps.google.com/?q=Wristberg+Rd,+Accra,+Ghana" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => handleContactClick('location')}
+              className="flex items-start space-x-4 hover:transform hover:scale-105 transition-transform duration-300"
+            >
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
                   <FaMapMarkerAlt className="w-6 h-6 text-teal-600" />
@@ -79,9 +91,13 @@ const ContactSection = () => {
                   Wristberg Rd, Accra, Ghana
                 </p>
               </div>
-            </div>
+            </a>
 
-            <div className="flex items-start space-x-4">
+            <a 
+              href="tel:+233538096641"
+              onClick={() => handleContactClick('phone')}
+              className="flex items-start space-x-4 hover:transform hover:scale-105 transition-transform duration-300"
+            >
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
                   <FaPhone className="w-6 h-6 text-teal-600" />
@@ -93,9 +109,15 @@ const ContactSection = () => {
                   +233 53 809 6641 or +233 24 947 1147
                 </p>
               </div>
-            </div>
+            </a>
 
-            <div className="flex items-start space-x-4">
+            <a 
+              href="https://wa.me/233558119187"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleContactClick('whatsapp')}
+              className="flex items-start space-x-4 hover:transform hover:scale-105 transition-transform duration-300"
+            >
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
                   <FaWhatsapp className="w-6 h-6 text-teal-600" />
@@ -107,9 +129,13 @@ const ContactSection = () => {
                   +233 558 119 187
                 </p>
               </div>
-            </div>
+            </a>
 
-            <div className="flex items-start space-x-4">
+            <a 
+              href="mailto:smilebasic25@gmail.com"
+              onClick={() => handleContactClick('email')}
+              className="flex items-start space-x-4 hover:transform hover:scale-105 transition-transform duration-300"
+            >
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
                   <FaEnvelope className="w-6 h-6 text-teal-600" />
@@ -121,7 +147,7 @@ const ContactSection = () => {
                   smilebasic25@gmail.com
                 </p>
               </div>
-            </div>
+            </a>
           </motion.div>
 
           {/* Contact Form */}
