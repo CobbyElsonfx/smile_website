@@ -1,8 +1,8 @@
 const StepCard = ({ number, title, description }) => (
   <div className="flex flex-col items-center text-center">
     <div className="relative mb-4">
-      <div className="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full bg-emerald-600 flex items-center justify-center">
+      <div className="w-20 h-20 rounded-full bg-emerald-400 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-[#005653] flex items-center justify-center">
           <span className="text-white text-xl font-bold">{number}</span>
         </div>
       </div>
@@ -37,15 +37,15 @@ const GetStartedSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 mt-52 md:mt-10 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">GET STARTED</h2>
+          <h2 className="text-3xl font-light mb-4">GET STARTED</h2>
           <div className="flex items-center justify-center space-x-2">
-            <span className="text-gray-900 font-bold text-2xl">Simple</span>
-            <span className="text-gray-900 font-bold text-2xl">&</span>
-            <span className="text-emerald-500 font-bold text-2xl">Straight</span>
-            <span className="text-gray-900 font-bold text-2xl">Away</span>
+            <span className="text-gray-900 font-extrabold text-2xl">Simple</span>
+            <span className="text-gray-900 font-extrabold text-2xl">&</span>
+            <span className="text-emerald-500 font-extrabold text-2xl">Straight</span>
+            <span className="text-gray-900 font-extrabold text-2xl">Away</span>
           </div>
         </div>
 
@@ -55,7 +55,7 @@ const GetStartedSection = () => {
               <StepCard {...step} />
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-emerald-200 -z-10">
-                  <div className="absolute right-0 -top-1 w-2 h-2 rounded-full bg-emerald-500"></div>
+                  <div className="absolute right-0 -top-1 w-2 h-2 rounded-full bg-[#005653]"></div>
                 </div>
               )}
             </div>
