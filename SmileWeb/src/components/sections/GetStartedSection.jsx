@@ -16,28 +16,28 @@ const GetStartedSection = () => {
   const steps = [
     {
       number: "1",
-      title: "Register",
-      description: "Click on any of the register buttons, fill and submit valid details as required by Smile."
+      title: "Explore Features",
+      description: "Browse through our platform's functionalities to understand how Smile can benefit your school."
     },
     {
       number: "2",
-      title: "Review",
-      description: "After submission, we go through them and make sure you represent said school."
+      title: "Contact Us",
+      description: "Reach out to us via WhatsApp or phone call to discuss your school's needs and requirements."
     },
     {
       number: "3",
-      title: "Approval",
-      description: "After verification process is done, we then approve or reject your account based on the outcome."
+      title: "School Setup",
+      description: "We'll help set up and configure the platform specifically for your school's requirements."
     },
     {
       number: "4",
-      title: "Start Using",
-      description: "After your account is approved, you get complete access to the Smile Platform (Web, Android, iOS)."
+      title: "Training & Support",
+      description: "Get 24/7 support and comprehensive workshops for parents, teachers, and students on using the platform."
     }
   ];
 
   return (
-    <section className="py-16 mt-52 md:mt-10 bg-gray-50">
+    <section className="py-16 mt-52 md:mt-25 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-light mb-4">GET STARTED</h2>

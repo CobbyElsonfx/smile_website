@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      const result = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.text === 'OK') {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully.'
+        });
+        form.current.reset();
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Oops! Something went wrong. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -55,7 +90,21 @@ const ContactSection = () => {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Call Us</h3>
                 <p className="text-gray-600">
-                  +233 (0) 302 123 456
+                  +233 53 809 6641 or +233 24 947 1147
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
+                  <FaWhatsapp className="w-6 h-6 text-teal-600" />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">WhatsApp</h3>
+                <p className="text-gray-600">
+                  +233 558 119 187
                 </p>
               </div>
             </div>
@@ -69,7 +118,7 @@ const ContactSection = () => {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Email Us</h3>
                 <p className="text-gray-600">
-                  info@smileschools.com
+                  smilebasic25@gmail.com
                 </p>
               </div>
             </div>
@@ -82,27 +131,38 @@ const ContactSection = () => {
             transition={{ duration: 0.8 }}
             className="bg-white rounded-2xl shadow-xl p-8"
           >
-            <form className="space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus.message && (
+                <div className={`p-4 rounded-lg ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-100 text-green-700' 
+                    : 'bg-red-100 text-red-700'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-1">
                   Name
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  id="user_name"
+                  name="user_name"
+                  required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                   placeholder="Your name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="user_email"
+                  name="user_email"
+                  required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                   placeholder="your@email.com"
                 />
@@ -114,6 +174,7 @@ const ContactSection = () => {
                 <textarea
                   id="message"
                   name="message"
+                  required
                   rows="4"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                   placeholder="Your message"
@@ -121,9 +182,12 @@ const ContactSection = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-teal-600 to-emerald-500 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300"
+                disabled={isSubmitting}
+                className={`w-full bg-gradient-to-r from-teal-600 to-emerald-500 text-white py-3 px-6 rounded-lg font-medium 
+                  ${!isSubmitting ? 'hover:shadow-lg transform hover:scale-[1.02]' : 'opacity-75 cursor-not-allowed'} 
+                  transition-all duration-300`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>

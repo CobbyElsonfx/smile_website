@@ -9,32 +9,32 @@ const Features = () => {
   const features = [
     {
       title: "Administration",
-      description: "Control your school. This is where you configure and administer the backing stuff.",
+      description: "Streamline your school operations with powerful admin tools for configuration, user management, and system settings.",
       icon: AdminIcon,
     },
     {
       title: "Students",
-      description: "Manage your students, their parents, track attendance & generate student id cards.",
+      description: "Boost enrollment and retention with comprehensive student management - from digital  attendance tracking to parent communication.",
       icon: UserGroupIcon,
     },
     {
       title: "Staff",
-      description: "Manage your staff members, tax filings, work schedules and pay their salaries.",
+      description: "Optimize workforce management with integrated tools for staff scheduling, performance tracking, and automated payroll processing.",
       icon: Staff,
     },
     {
       title: "Academics",
-      description: "View and generate student report cards, analyze their performance.",
+      description: "Enhance student success with detailed performance analytics, automated report card generation, and curriculum management tools.",
       icon: AcademicIcon,
     },
     {
       title: "Documentation",
-      description: "Manage your student's documents & generate certificates.",
+      description: "Go paperless with digital document management - easily create, store, and share certificates, transcripts, and student records securely.",
       icon: Docs,
     },
     {
       title: "Finance",
-      description: "Control your school's finances, setup and break fee payments.",
+      description: "Maximize revenue with smart financial tools - streamline fee collection, track expenses, and generate insightful financial reports.",
       icon: FinanceIcon,
     }
   ];

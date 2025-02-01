@@ -1,7 +1,6 @@
 import Hero from '../components/Hero'
 import Button from '../components/shared/Button'
 import GetStartedSection from '../components/sections/GetStartedSection'
-import FeaturesSection from '../components/sections/FeaturesSection'
 import AdminFeaturesSection from '../components/sections/AdminFeaturesSection'
 import Features from '../components/sections/Features'
 import Footer from '../components/sections/Footer'

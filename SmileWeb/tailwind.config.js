@@ -8,8 +8,8 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#98B4A6', // tea color
-          dark: '#7A9587',    // darker tea
+          DEFAULT: '#98B4A6', 
+          dark: '#7A9587',    
           light: '#C5D8CF',   // lighter tea
           50: '#F3F7F5',      // very light tea
         },

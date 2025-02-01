@@ -18,7 +18,7 @@ const HeroSection = () => {
           Your browser does not support the video tag.
         </video>
         {/* Overlay with gradient for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-600/80 to-teal-600/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-600/40 to-teal-600/30"></div>
       </div>
 
       {/* Content */}

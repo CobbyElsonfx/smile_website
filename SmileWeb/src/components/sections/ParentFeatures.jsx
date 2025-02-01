@@ -1,5 +1,6 @@
 import { FaUserGraduate, FaChartLine, FaBell, FaFileInvoiceDollar, FaComments } from 'react-icons/fa';
 import parentApp from '../../assets/mac.png'; // Add your app mockup image
+import AppPreview from '../AppPreview';
 
 const FeatureCard = ({ icon: Icon, title, description, color, index }) => (
   <div className={`bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group ${index % 2 === 0 ? 'hover:bg-gradient-to-br from-teal-50 to-emerald-50' : 'hover:bg-gradient-to-br from-emerald-50 to-teal-50'}`}>
@@ -115,11 +116,7 @@ const ParentFeatures = () => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <img 
-                  src={parentApp}
-                  alt="SMILE Web Platform Preview"
-                  className="w-full max-w-lg transform hover:-translate-y-2 transition-transform duration-500 shadow-2xl rounded-3xl"
-                />
+                <AppPreview />
               </div>
             </div>
           </div>
