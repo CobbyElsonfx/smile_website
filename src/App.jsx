@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 ReactGA.initialize('G-XXXXXXXXXX'); // Replace with your actual Google Analytics measurement ID
 
 function App() {
-  // Track pageview on component mount
+
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
   }, []);
